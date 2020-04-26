@@ -1,4 +1,5 @@
 const { Compra } = require('../../model/compra.js');
+const uuid = require('uuid');
 
 const compras = [{ 
     id: 1, 
@@ -31,7 +32,7 @@ const getCompra = (request, response) => {
 }
 
 const addCompra = (request, response) => {
-    const newCompra = request.body;
+    const newCompra = {...request.body, id: uuid.v4()};
     console.log('body', newCompra);
 
     // TODO: insert on DB
